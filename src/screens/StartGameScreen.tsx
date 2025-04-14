@@ -1,6 +1,7 @@
 import PrimaryButton from '@/components/PrimaryButton'
 import { Colors } from '@/constants/colors'
 import { useState } from 'react'
+import { Text } from 'react-native'
 import {TextInput, View, StyleSheet, Alert} from 'react-native'
 
 type Props = {
@@ -27,6 +28,9 @@ const StartGameScreen = ({onPickNumber}: Props) => {
 
   return (
     <View style={styles.container}>
+      <Text className='text-3xl text-white text-center border-2 font-bold border-white m-8 mt-16 p-3'>
+            Guess the number
+        </Text>
       <View style={styles.inputContainer}>
         <TextInput 
           maxLength={2} 

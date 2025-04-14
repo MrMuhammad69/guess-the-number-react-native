@@ -7,9 +7,11 @@ type Props = {
     title: string
     subtext?: string
     onPress?: () => void
+    width?: number | string
+    className?: string
 }
 
-const PrimaryButton = ({title, subtext, onPress}: Props) => {
+const PrimaryButton = ({title, subtext, onPress, width = '100%', className}: Props) => {
   const [isPressed, setIsPressed] = useState(false)
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -27,11 +29,11 @@ const PrimaryButton = ({title, subtext, onPress}: Props) => {
       onPress={onPress}
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => setIsPressed(false)}
-      style={styles.pressable}
+      style={[styles.pressable, { width: 'auto' }]}
     >
       <Animated.View style={[styles.container, animatedStyle]}>
         <View style={styles.contentContainer}>
-          <Text style={styles.title}>{title}</Text>
+          <Text className={className} style={styles.title}>{title}</Text>
           {subtext && <Text style={styles.subtext}>{subtext}</Text>}
         </View>
       </Animated.View>
@@ -41,7 +43,7 @@ const PrimaryButton = ({title, subtext, onPress}: Props) => {
 
 const styles = StyleSheet.create({
   pressable: {
-    width: '100%',
+    flex: 1,
   },
   container: {
     width: '100%',
